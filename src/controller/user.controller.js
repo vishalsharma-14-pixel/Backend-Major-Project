@@ -3,8 +3,8 @@ import { ApiError } from "../utils/apiError.js";
 import { User} from "../models/user.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken.js";
-import { act } from "react";
+import jwt from "jsonwebtoken";
+
 
 const generateAccessAndRefreshToken = async(userId) => {
     try {
@@ -344,6 +344,7 @@ const updateUserCoverImage = asyncHandler(async(req, res) => {
     .json(new ApiResponse(200, user, "coverImage updated sucessfully"))
 
 })
+
 
 export {
     registerUser,
