@@ -3,10 +3,9 @@ import { asyncHandler } from "../utils/asynchandler.js"
 import jwt from "jsonwebtoken"
 import { User } from "../models/user.model.js"
 
-import dotenv from "dotenv";
-dotenv.config({ path: './.env' });
 
-    export const verifyJW = asyncHandler(async(req , _ ,next) => {
+
+    export const verifyJW = asyncHandler(async(req , res ,next) => {
         try {
             const token = req.cookies?.accessToken  || req.header
             ("Authorization")?.replace("Bearer", "").trim()

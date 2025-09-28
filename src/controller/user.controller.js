@@ -5,9 +5,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose,{Schema}  from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config({ path: './.env' });
 
 const generateAccessAndRefreshToken = async(userId) => {
     try {
@@ -230,8 +228,9 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
             secure: true
         }
     
-        const {accessToken, refreshToken: newRefreshToken} = await generateAccessAndRefereshToken(user._id)
-    
+        const { accessToken, refreshToken: newRefreshToken } = 
+              await generateAccessAndRefreshToken(user._id);
+
         return res
         .status(200)
         .cookie("accessToken", accessToken, options)
