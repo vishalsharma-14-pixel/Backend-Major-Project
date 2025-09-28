@@ -3,12 +3,13 @@ import { asyncHandler } from "../utils/asynchandler.js"
 import jwt from "jsonwebtoken"
 import { User } from "../models/user.model.js"
 
-
+import dotenv from "dotenv";
+dotenv.config({ path: './.env' });
 
     export const verifyJW = asyncHandler(async(req , _ ,next) => {
         try {
             const token = req.cookies?.accessToken  || req.header
-            ("Autherization")?.replace("Bearer", "")
+            ("Authorization")?.replace("Bearer", "").trim()
         
             if(!token){
                 throw new ApiError(401,"Unauthorized requerst")
